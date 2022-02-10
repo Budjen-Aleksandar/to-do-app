@@ -1,19 +1,26 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
-const Form = () => {
-    return (
+const Form = ({ setTextInput, textInput, todos, setTodos }) => {
+  
+    const eventHandler = (e) => {
+      setTextInput(e.target.value)
+    }
+
+    const submitEventHandler = (e) => {
+      e.preventDefault();
+      setTodos([
+        ...todos, {text: textInput, completed: false, id: Math.random().toString(16).slice(-4)}
+      ])
+      setTextInput('');
+    }
+
+  return (
         <form>
-      <input type="text" className="todo-input" />
-      <button className="todo-button" type="submit">
+      <input value={textInput} onChange={eventHandler} type="text" className="todo-input" />
+      <button onClick={submitEventHandler} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
       </button>
-      <div className="select">
-        <select name="todos" className="filter-todo">
-          <option value="all">All</option>
-          <option value="completed">Completed</option>
-          <option value="uncompleted">Uncompleted</option>
-        </select>
-      </div>
     </form>
     )
 }
