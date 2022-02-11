@@ -1,22 +1,31 @@
 /* eslint-disable no-unused-vars */
 // import logo from './logo.svg';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './App.css';
 // importing componenets!
 import Form from './components/Form';
 import TodoList from './components/TodoList';
 
 function App() {
-  const [textInput, setTextInput] = useState('');
-  const [todos, setTodos] = useState([]);
+  // also I guess state is missing here
+  const [todos, setTodos] = useState([])
+  // changing this line as per comment on the Form component
+  const addTodo = (todo) => {
+    setTodos([
+      ...todos,
+      todo
+    ])
+  }
 
   return (
     <div className='App'>
       <header>
       <h1>To-Do-List </h1>
       </header>
-      <Form textInput={textInput} todos={todos} setTodos={setTodos} setTextInput={setTextInput}/>
-      <TodoList setTodos={setTodos} todos={todos}/>
+      <Form addTodo={addTodo}/>
+      {/*probably missing here*/}
+      <TodoList setTodos={setTodos} todos={todos} />
+
     </div>
   );
 
