@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import logo from './logo.svg';
 import React, {useState} from 'react';
 import './App.css';
@@ -15,16 +16,20 @@ function App() {
       todo
     ])
   }
+
   return (
     <div className='App'>
       <header>
-      <h1>To-Do-List</h1>
+      <h1>To-Do-List </h1>
       </header>
       <Form addTodo={addTodo}/>
       {/*probably missing here*/}
       <TodoList setTodos={setTodos} todos={todos} />
+
     </div>
   );
+
+
 }
 
 export default App;
